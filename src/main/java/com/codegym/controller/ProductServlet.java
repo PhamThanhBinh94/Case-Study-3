@@ -65,7 +65,7 @@ public class ProductServlet extends HttpServlet {
         int amount = Integer.parseInt(request.getParameter("amount"));
         Product newProduct = new Product(type, name, brand, price, image, amount);
         productDAO.insertProduct(newProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/create.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -74,7 +74,7 @@ public class ProductServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        ;try {
+        try {
             switch (action) {
                 case "create":
                     showNewForm(request, response);
@@ -106,7 +106,7 @@ public class ProductServlet extends HttpServlet {
         productDAO.deleteProduct(id);
         List<Product> listProduct = productDAO.selectAllProducts();
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/delete.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
         dispatcher.forward(request,response);
 
     }
