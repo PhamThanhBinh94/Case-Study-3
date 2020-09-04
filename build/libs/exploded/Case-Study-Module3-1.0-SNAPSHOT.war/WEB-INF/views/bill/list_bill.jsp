@@ -24,7 +24,7 @@
         </tr>
         <c:forEach var="bill" items="${bills}">
             <tr>
-                <td><c:out value="${bill.getBill_id()}"/></td>
+                <td><a href="/bill?action=view&id=${bill.getBill_id()}"><c:out value="${bill.getBill_id()}"/></a></td>
                 <td><c:out value="${bill.getCustomer_id()}"/></td>
                 <td><c:out value="${bill.getCreate_date()}"/></td>
                 <td><c:out value="${bill.getAddress()}"/></td>
