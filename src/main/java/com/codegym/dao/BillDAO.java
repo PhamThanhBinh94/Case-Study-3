@@ -3,6 +3,7 @@ package com.codegym.dao;
 import com.codegym.model.Bill;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillDAO implements iBillDAO {
@@ -12,6 +13,8 @@ public class BillDAO implements iBillDAO {
 
     private static final String INSERT_BILL_SQL = "insert into bill(customer_id, create_date, address, status) " + "values(?,?,?,?);";
     private static final String SELECT_BILL_BY_ID = "select bill_id, customer_id, create_date, address, status from bill where id = ?;";
+    private static final String SELECT_ALL_BILLS = "select * from bill;";
+
 
     public BillDAO(){
     }
@@ -60,7 +63,23 @@ public class BillDAO implements iBillDAO {
 
     @Override
     public List<Bill> selectAllBill() {
-        return null;
+        List<Bill> bills = new ArrayList<>();
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_BILLS);){
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("bill_id");
+                String customer_id = rs.getString("customer_id");
+                String create_date = rs.getString("create_date");
+                String address = rs.getString("address");
+                String status = rs.getString("status");
+                bills.add(new Bill(id, customer_id, create_date, address, status));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bills;
     }
 
     @Override
