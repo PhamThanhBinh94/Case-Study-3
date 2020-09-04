@@ -12,7 +12,7 @@ public interface IProductDAO {
 
     public List<Product> selectAllProducts();
 
-    public boolean deleteProduct(int id) throws SQLException;
+    public boolean deleteProduct(String id) throws SQLException;
 
     public boolean updateProduct(Product product) throws SQLException;
 }

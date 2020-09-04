@@ -92,11 +92,11 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public boolean deleteProduct(int id) throws SQLException {
+    public boolean deleteProduct(String id) throws SQLException {
         boolean rowDeleted;
         try(Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_PRODUCT_SQL);){
-            preparedStatement.setInt(1,id);
+            preparedStatement.setString(1,id);
             rowDeleted = preparedStatement.executeUpdate() > 0;
         }
         return rowDeleted;

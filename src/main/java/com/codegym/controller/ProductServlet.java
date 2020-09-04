@@ -102,7 +102,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         productDAO.deleteProduct(id);
         List<Product> listProduct = productDAO.selectAllProducts();
         request.setAttribute("listProduct", listProduct);
