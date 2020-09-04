@@ -111,6 +111,7 @@ public class ProductDAO implements IProductDAO {
             preparedStatement.setString(3, product.getBrand());
             preparedStatement.setInt(4, product.getPrice());
             preparedStatement.setString(5, product.getImage());
+            preparedStatement.setInt(6, product.getAmount());
 
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
