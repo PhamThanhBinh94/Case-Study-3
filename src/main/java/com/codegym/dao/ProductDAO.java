@@ -15,7 +15,7 @@ public class ProductDAO implements IProductDAO {
     private static final String SELECT_PRODUCT_BY_ID = "select id,type,name,brand from product where id = ?";
     private static final String SELECT_ALL_PRODUCT = "select * from product";
     private static final String DELETE_PRODUCT_SQL =  "delete from product where id = ?;";
-    private static final String UPDATE_PRODUCT_SQL = "update product set type = ?, name = ?, brand = ?, price =?, image= ? where id= ?; ";
+    private static final String UPDATE_PRODUCT_SQL = "update product set type = ?, name = ?, brand = ?, price =?, image= ?, amount = ? where id= ?; ";
 
     public ProductDAO() {
     }
@@ -47,7 +47,7 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public Product selectProduct(int id) throws SQLException {
+    public Product selectProduct(int id) {
         Product product = null;
         try(Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRODUCT_BY_ID);){
@@ -60,6 +60,8 @@ public class ProductDAO implements IProductDAO {
                 String brand = rs.getString("brand");
                 product = new Product(id1,type,name,brand);
             }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
         return product;
     }
