@@ -11,7 +11,7 @@ public class ProductDAO implements IProductDAO {
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
 
-    private static final String INSERT_PRODUCT_SQL = "INSERT INTO product" + "(type, name, brand, price, image, amount) VALUES" + "(?,?,?,?,?,?);";
+    private static final String INSERT_PRODUCT_SQL = "INSERT INTO product" + "(id,type, name, brand, price, image, amount) VALUES" + "(?,?,?,?,?,?,?);";
     private static final String SELECT_PRODUCT_BY_ID = "select id,type,name,brand from product where id = ?";
     private static final String SELECT_ALL_PRODUCT = "select * from product";
     private static final String DELETE_PRODUCT_SQL =  "delete from product where id = ?;";
@@ -34,12 +34,13 @@ public class ProductDAO implements IProductDAO {
     public void insertProduct(Product product) {
         try(Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)){
-            preparedStatement.setString(1, product.getType());
-            preparedStatement.setString(2, product.getName());
-            preparedStatement.setString(3, product.getBrand());
-            preparedStatement.setInt(4, product.getPrice());
-            preparedStatement.setString(5, product.getImage());
-            preparedStatement.setInt(6, product.getAmount());
+            preparedStatement.setString(1,product.getId());
+            preparedStatement.setString(2, product.getType());
+            preparedStatement.setString(3, product.getName());
+            preparedStatement.setString(4, product.getBrand());
+            preparedStatement.setInt(5, product.getPrice());
+            preparedStatement.setString(6, product.getImage());
+            preparedStatement.setInt(7, product.getAmount());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

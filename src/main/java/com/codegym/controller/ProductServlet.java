@@ -27,7 +27,6 @@ public class ProductServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-        ;
         try {
             switch (action) {
                 case "create":
@@ -57,13 +56,14 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void insertProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
         String type = request.getParameter("type");
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         int price = Integer.parseInt(request.getParameter("price"));
         String image = request.getParameter("image");
         int amount = Integer.parseInt(request.getParameter("amount"));
-        Product newProduct = new Product(type, name, brand, price, image, amount);
+        Product newProduct = new Product(id,type, name, brand, price, image, amount);
         productDAO.insertProduct(newProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/create.jsp");
         dispatcher.forward(request, response);
