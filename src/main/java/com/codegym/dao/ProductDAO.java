@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO implements IProductDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/test?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
 
@@ -100,8 +100,20 @@ public class ProductDAO implements IProductDAO {
     }
 
     @Override
-    public boolean updateProduct(Product product) {
-        return false;
+    public boolean updateProduct(Product product) throws SQLException {
+        boolean rowUpdated;
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PRODUCT_SQL);) {
+            preparedStatement.setString(1, product.getType());
+            preparedStatement.setString(2, product.getName());
+            preparedStatement.setString(3, product.getBrand());
+            preparedStatement.setInt(4, product.getPrice());
+            preparedStatement.setString(5, product.getImage());
+
+            rowUpdated = preparedStatement.executeUpdate() > 0;
+        }
+        return rowUpdated;
     }
+
 }
 
