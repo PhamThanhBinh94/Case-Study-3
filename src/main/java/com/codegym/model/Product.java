@@ -29,6 +29,15 @@ public class Product {
         this.brand = brand;
     }
 
+    public Product(String type, String name, String brand, int price, String image, int amount) {
+        this.type = type;
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.image = image;
+        this.amount = amount;
+    }
+
     public String getId() {
         return id;
     }
