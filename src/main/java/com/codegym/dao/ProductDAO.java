@@ -99,8 +99,12 @@ public class ProductDAO implements IProductDAO {
         return rowDeleted;
     }
 
+    public static void main(String[] args) {
+
+    }
     @Override
     public boolean updateProduct(Product product) {
         return false;
     }
 }
+
