@@ -12,7 +12,7 @@ public interface iBillDAO {
 
     public List<Bill> selectAllBill();
 
-    public boolean updateBill(Bill bill);
+    public boolean updateBill(Bill bill) throws SQLException;
 
     public boolean deleteBill(int id) throws SQLException;
 }
