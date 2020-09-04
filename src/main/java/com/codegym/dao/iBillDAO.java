@@ -15,4 +15,6 @@ public interface iBillDAO {
     public boolean updateBill(Bill bill) throws SQLException;
 
     public boolean deleteBill(int id) throws SQLException;
+
+    public int getTotalBill(int bill_id) throws SQLException;
 }

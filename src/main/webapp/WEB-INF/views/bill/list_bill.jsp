@@ -20,6 +20,7 @@
             <th>Create Date</th>
             <th>Address</th>
             <th>Status</th>
+            <th>Total</th>
         </tr>
         <c:forEach var="bill" items="${bills}">
             <tr>
@@ -28,6 +29,7 @@
                 <td><c:out value="${bill.getCreate_date()}"/></td>
                 <td><c:out value="${bill.getAddress()}"/></td>
                 <td><c:out value="${bill.getStatus()}"/></td>
+                <td><c:out value="${totals.get(bills.indexOf(bill))}"/></td>
             </tr>
         </c:forEach>
     </table>

@@ -15,6 +15,7 @@ public class BillDAO implements iBillDAO {
     private static final String SELECT_BILL_BY_ID = "select bill_id, customer_id, create_date, address, status from bill where id = ?;";
     private static final String SELECT_ALL_BILLS = "select * from bill;";
     private static final String UPDATE_BILL_SQL = "update bill set customer_id=?, create_date=?, address=?, status=? where id=?;";
+    private static final String GET_TOTAL_BILL = "select sum(unit_price) as total from bill_detail where bill_id=?;";
 
     public BillDAO(){
     }
@@ -101,5 +102,20 @@ public class BillDAO implements iBillDAO {
     @Override
     public boolean deleteBill(int id) throws SQLException {
         return false;
+    }
+
+    @Override
+    public int getTotalBill(int bill_id) throws SQLException {
+        int total = 0;
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_TOTAL_BILL);) {
+            preparedStatement.setInt(1,bill_id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                total = rs.getInt("total");
+            }
+        }
+        return total;
     }
 }
