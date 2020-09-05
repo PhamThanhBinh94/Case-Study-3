@@ -34,7 +34,11 @@ public class ProductDAO implements IProductDAO {
     public void insertProduct(Product product) {
         try(Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)){
+<<<<<<< HEAD
             preparedStatement.setString(1, product.getId());
+=======
+            preparedStatement.setString(1,product.getId());
+>>>>>>> binh
             preparedStatement.setString(2, product.getType());
             preparedStatement.setString(3, product.getName());
             preparedStatement.setString(4, product.getBrand());

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "BillServlet", urlPatterns = "/bill")
@@ -33,18 +34,41 @@ public class BillServlet extends javax.servlet.http.HttpServlet {
             switch (action) {
                 case "create":
                     break;
+                case "view":
+                    showBillDetail(request,response);
+                    break;
                 default:
                     listBill(request,response);
                     break;
             }
-        } finally {
-
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    private void listBill(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void showBillDetail(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        int bill_id = Integer.parseInt(request.getParameter("id"));
+        Bill bill = billDAO.selectBill(bill_id);
+        List<String> details = billDAO.getBillDetail(bill_id);
+        int total = billDAO.getTotalBill(bill_id);
+
+        request.setAttribute("bill",bill);
+        request.setAttribute("details",details);
+        request.setAttribute("total",total);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/bill/bill_detail.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void listBill(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         List<Bill> bills = billDAO.selectAllBill();
+        List<Integer> totals = new ArrayList<>();
+        for (Bill bill : bills) {
+            int total = billDAO.getTotalBill(bill.getBill_id());
+            totals.add(total);
+        }
         request.setAttribute("bills", bills);
+        request.setAttribute("totals",totals);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/bill/list_bill.jsp");
         dispatcher.forward(request,response);
     }
