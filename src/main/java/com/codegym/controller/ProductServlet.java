@@ -89,8 +89,8 @@ public class ProductServlet extends HttpServlet {
                     listProduct(request, response);
                     break;
             }
-        } catch (SQLException throwables){
-            throwables.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
         }
     }
 
@@ -108,7 +108,6 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("listProduct", listProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
         dispatcher.forward(request,response);
-
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
