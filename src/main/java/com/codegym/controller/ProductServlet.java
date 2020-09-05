@@ -85,6 +85,9 @@ public class ProductServlet extends HttpServlet {
                 case "delete":
                     deleteProduct(request, response);
                     break;
+                case "view":
+                    showProductDetail(request,response);
+                    break;
                 default:
                     listProduct(request, response);
                     break;
@@ -92,6 +95,18 @@ public class ProductServlet extends HttpServlet {
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    private void showProductDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Product product = productDAO.selectProduct(id);
+        List<String> details = productDAO.getDetailOfTV(id);
+
+        request.setAttribute("product",product);
+        request.setAttribute("details",details);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/product_detail.jsp");
+        dispatcher.forward(request,response);
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

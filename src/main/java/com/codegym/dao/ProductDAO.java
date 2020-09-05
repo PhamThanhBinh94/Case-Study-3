@@ -16,6 +16,7 @@ public class ProductDAO implements IProductDAO {
     private static final String SELECT_ALL_PRODUCT = "select * from product";
     private static final String DELETE_PRODUCT_SQL =  "delete from product where id = ?;";
     private static final String UPDATE_PRODUCT_SQL = "update product set type = ?, name = ?, brand = ?, price =?, image= ?, amount = ? where id= ?; ";
+    private static final String GET_DETAIL_TV = "select overview, connection, smart_internet, image_sound_technology from tivi_detail where id = ?;";
 
     public ProductDAO() {
     }
@@ -122,6 +123,29 @@ public class ProductDAO implements IProductDAO {
             rowUpdated = preparedStatement.executeUpdate() > 0;
         }
         return rowUpdated;
+    }
+
+    public List<String> getDetailOfTV(String id) {
+        List<String> details = new ArrayList<>();
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_DETAIL_TV);) {
+            preparedStatement.setString(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String overview = "Tổng quan#" + rs.getString("overview");
+                String connect = "Kết nối#" + rs.getString("connection");
+                String smart_internet = "Smart TV/Internet TV#" + rs.getString("smart_internet");
+                String tech = "Công nghệ âm thanh, hình ảnh#" + rs.getString("image_sound_technology");
+                details.add(overview.replaceAll("<info>","==="));
+                details.add(connect.replaceAll("<info>","==="));
+                details.add(smart_internet.replaceAll("<info>","==="));
+                details.add(tech.replaceAll("<info>","==="));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return details;
     }
 
 }

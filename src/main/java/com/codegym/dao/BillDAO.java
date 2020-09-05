@@ -133,8 +133,6 @@ public class BillDAO implements iBillDAO {
                 String unit_price = String.valueOf(rs.getInt("unit_price"));
                 String amount = String.valueOf(rs.getInt("amount"));
                 details.add(product_id + "__" + unit_price + "__" + amount);
-//                details.add(unit_price);
-//                details.add(amount);
             }
         } catch (SQLException e) {
             e.printStackTrace();
