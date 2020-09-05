@@ -30,6 +30,12 @@
                 <input type="hidden" name="id" value="<c:out value="${product.getId()}"/> "/>
             </c:if>
             <tr>
+                <th>ID: </th>
+                <td>
+                    <input type="text" name="id" value="<c:out value="${product.getId()}"/> ">
+                </td>
+            </tr>
+            <tr>
                 <th>Type: </th>
                 <td>
                     <input type="text" name="type" value="<c:out value="${product.getType()}"/> ">

@@ -25,6 +25,12 @@
                 <h2>Add New Product</h2>
             </caption>
             <tr>
+                <th>ID: </th>
+                <td>
+                    <input type="text" name="id" id="id"/>
+                </td>
+            </tr>
+            <tr>
                 <th>Type: </th>
                 <td>
                     <input type="text" name="type" id="type"/>
