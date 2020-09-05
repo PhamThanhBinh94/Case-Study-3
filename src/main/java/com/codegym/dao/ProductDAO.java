@@ -12,7 +12,7 @@ public class ProductDAO implements IProductDAO {
     private String jdbcPassword = "123456";
 
     private static final String INSERT_PRODUCT_SQL = "INSERT INTO product" + "(id,type, name, brand, price, image, amount) VALUES" + "(?,?,?,?,?,?,?);";
-    private static final String SELECT_PRODUCT_BY_ID = "select id,type,name,brand from product where id = ?";
+    private static final String SELECT_PRODUCT_BY_ID = "select id,type,name,brand,price,image,amount from product where id = ?";
     private static final String SELECT_ALL_PRODUCT = "select * from product";
     private static final String DELETE_PRODUCT_SQL =  "delete from product where id = ?;";
     private static final String UPDATE_PRODUCT_SQL = "update product set type = ?, name = ?, brand = ?, price =?, image= ?, amount = ? where id= ?; ";
@@ -34,11 +34,7 @@ public class ProductDAO implements IProductDAO {
     public void insertProduct(Product product) {
         try(Connection connection = getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRODUCT_SQL)){
-<<<<<<< HEAD
             preparedStatement.setString(1, product.getId());
-=======
-            preparedStatement.setString(1,product.getId());
->>>>>>> binh
             preparedStatement.setString(2, product.getType());
             preparedStatement.setString(3, product.getName());
             preparedStatement.setString(4, product.getBrand());
@@ -61,9 +57,12 @@ public class ProductDAO implements IProductDAO {
             while (rs.next()){
                 String id1 = rs.getString("id");
                 String type = rs.getString("type");
-                String name = rs.getString("brand");
+                String name = rs.getString("name");
                 String brand = rs.getString("brand");
-                product = new Product(id1,type,name,brand);
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+                int amount = rs.getInt("amount");
+                product = new Product(id1,type,name,brand,price,image,amount);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

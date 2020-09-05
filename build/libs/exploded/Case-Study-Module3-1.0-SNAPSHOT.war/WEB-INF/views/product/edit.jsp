@@ -32,7 +32,7 @@
             <tr>
                 <th>ID: </th>
                 <td>
-                    <input type="text" name="id" value="<c:out value="${product.getId()}"/> ">
+                    <c:out value="${product.getId()}"/>
                 </td>
             </tr>
             <tr>
@@ -56,19 +56,19 @@
             <tr>
                 <th>Price: </th>
                 <td>
-                    <input type="text" name="type" value="<c:out value="${product.getPrice()}"/> ">
+                    <input type="text" name="price" value="<c:out value="${product.getPrice()}"/> ">
                 </td>
             </tr>
             <tr>
                 <th>Image: </th>
                 <td>
-                    <input type="text" name="type" value="<c:out value="${product.getImage()}"/> ">
+                    <input type="text" name="image" value="<c:out value="${product.getImage()}"/> ">
                 </td>
             </tr>
             <tr>
                 <th>Amount: </th>
                 <td>
-                    <input type="text" name="type" value="<c:out value="${product.getAmount()}"/> ">
+                    <input type="text" name="amount" value="<c:out value="${product.getAmount()}"/> ">
                 </td>
             </tr>
             <tr>
