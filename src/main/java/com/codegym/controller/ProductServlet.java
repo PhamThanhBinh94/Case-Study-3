@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/products")
@@ -100,7 +101,16 @@ public class ProductServlet extends HttpServlet {
     private void showProductDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         Product product = productDAO.selectProduct(id);
-        List<String> details = productDAO.getDetailOfTV(id);
+        List<String> details = new ArrayList<>();
+        if (product.getType().equals("tivi")) {
+            details = productDAO.getDetailOfTV(id);
+        } else if (product.getType().equals("dieu-hoa-nhiet-do")) {
+            details = productDAO.getDetailOfDH(id);
+        } else if (product.getType().equals("tu-lanh")) {
+            details = productDAO.getDetailOfTL(id);
+        } else if (product.getType().equals("may-giat")) {
+            details = productDAO.getDetailOfMG(id);
+        }
 
         request.setAttribute("product",product);
         request.setAttribute("details",details);

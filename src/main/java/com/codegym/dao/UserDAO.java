@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUserDAO{
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/test?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
-    private static final String INSERT_USERS_SQL = "INSERT INTO customer"  + "values" +"(?,?,?,?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO customer "  + "values" +"(?,?,?,?);";
     private static final String SELECT_USER_BY_PHONE = "select * from customer where phone = ?;";
     private static final String SELECT_ALL_USER = "select * from customer;";
 

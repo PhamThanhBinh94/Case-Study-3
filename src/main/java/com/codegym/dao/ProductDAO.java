@@ -17,6 +17,9 @@ public class ProductDAO implements IProductDAO {
     private static final String DELETE_PRODUCT_SQL =  "delete from product where id = ?;";
     private static final String UPDATE_PRODUCT_SQL = "update product set type = ?, name = ?, brand = ?, price =?, image= ?, amount = ? where id= ?; ";
     private static final String GET_DETAIL_TV = "select overview, connection, smart_internet, image_sound_technology from tivi_detail where id = ?;";
+    private static final String GET_DETAIL_DH = "select feature, technology, general_info from dieuhoa_detail where id=?;";
+    private static final String GET_DETAIL_TL = "select feature, general_info from tulanh_detail where id=?;";
+    private static final String GET_DETAIL_MG = "select feature, technology, general_info from maygiat_detail where id=?;";
 
     public ProductDAO() {
     }
@@ -148,7 +151,66 @@ public class ProductDAO implements IProductDAO {
         return details;
     }
 
+    public List<String> getDetailOfDH(String id) {
+        List<String> details = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_DETAIL_DH);) {
+            preparedStatement.setString(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
 
+            while (rs.next()) {
+                String feature = "Đặc điểm#" + rs.getString("feature");
+                String technology = "Công nghệ#" + rs.getString("technology");
+                String general_info = "Thông tin chung#" + rs.getString("general_info");
+                details.add(feature.replaceAll("<info>","==="));
+                details.add(technology.replaceAll("<info>","==="));
+                details.add(general_info.replaceAll("<info>","==="));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return details;
+    }
+
+    public List<String> getDetailOfTL(String id) {
+        List<String> details = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_DETAIL_TL);) {
+            preparedStatement.setString(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String feature = "Đặc điểm#" + rs.getString("feature");
+                String general_info = "Thông tin chung#" + rs.getString("general_info");
+                details.add(feature.replaceAll("<info>","==="));
+                details.add(general_info.replaceAll("<info>","==="));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return details;
+    }
+
+    public List<String> getDetailOfMG(String id) {
+        List<String> details = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_DETAIL_MG);) {
+            preparedStatement.setString(1,id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String feature = "Đặc điểm#" + rs.getString("feature");
+                String technology = "Công nghệ#" + rs.getString("technology");
+                String general_info = "Thông tin chung#" + rs.getString("general_info");
+                details.add(feature.replaceAll("<info>","==="));
+                details.add(technology.replaceAll("<info>","==="));
+                details.add(general_info.replaceAll("<info>","==="));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return details;
+    }
 
 }
 
