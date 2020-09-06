@@ -60,6 +60,7 @@ public class UserServlet extends HttpServlet {
                     break;
                 default:
                     listUser(request,response);
+                    break;
             }
         } finally {
 
