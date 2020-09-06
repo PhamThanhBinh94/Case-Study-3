@@ -20,6 +20,7 @@ public class ProductDAO implements IProductDAO {
     private static final String GET_DETAIL_DH = "select feature, technology, general_info from dieuhoa_detail where id=?;";
     private static final String GET_DETAIL_TL = "select feature, general_info from tulanh_detail where id=?;";
     private static final String GET_DETAIL_MG = "select feature, technology, general_info from maygiat_detail where id=?;";
+    private static final String SELECT_BY_TYPE = "select * from product where type= ?;";
 
     public ProductDAO() {
     }
@@ -212,5 +213,26 @@ public class ProductDAO implements IProductDAO {
         return details;
     }
 
+    public List<Product> selectProductByType(String type) {
+        List<Product> products = new ArrayList<>();
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_TYPE);){
+            preparedStatement.setString(1,type);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                String id = rs.getString("id");
+                String type1 = rs.getString("type");
+                String name = rs.getString("name");
+                String brand = rs.getString("brand");
+                int price = rs.getInt("price");
+                String image = rs.getString("image");
+                int amount = rs.getInt("amount");
+                products.add(new Product(id,type1,name,brand,price,image,amount));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return products;
+    }
 }
 

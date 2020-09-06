@@ -42,10 +42,10 @@
                             Sản phẩm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Tivi</a>
-                            <a class="dropdown-item" href="#">Tủ lạnh</a>
-                            <a class="dropdown-item" href="#">Điều hòa</a>
-                            <a class="dropdown-item" href="#">Máy giặt</a>
+                            <a class="dropdown-item" href="/products?type=tivi">Tivi</a>
+                            <a class="dropdown-item" href="/products?type=tu-lanh">Tủ lạnh</a>
+                            <a class="dropdown-item" href="/products?type=dieu-hoa-nhiet-do">Điều hòa</a>
+                            <a class="dropdown-item" href="/products?type=may-giat">Máy giặt</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Khác</a>
                         </div>
@@ -71,7 +71,6 @@
 </center>
 <div align="center">
     <table border="1" cellpadding="5" class="table">
-        <caption><h2>List of Product</h2></caption>
         <tr class="thead-dark">
             <th>ID</th>
             <th>Type</th>
