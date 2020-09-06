@@ -120,7 +120,29 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> listProduct = productDAO.selectAllProducts();
+        String type = request.getParameter("type");
+        List<Product> listProduct = new ArrayList<>();
+        if (type == null){
+            type ="";
+        }
+        switch (type){
+            case "tivi":
+                listProduct = productDAO.selectProductByType(type);
+                break;
+            case "tu-lanh":
+                listProduct = productDAO.selectProductByType(type);
+                break;
+            case "dieu-hoa-nhiet-do":
+                listProduct = productDAO.selectProductByType(type);
+                break;
+            case "may-giat":
+                listProduct = productDAO.selectProductByType(type);
+                break;
+            default:
+                listProduct = productDAO.selectAllProducts();
+                break;
+        }
+
         request.setAttribute("listProduct", listProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
         dispatcher.forward(request, response);
