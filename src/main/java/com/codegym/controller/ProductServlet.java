@@ -104,6 +104,12 @@ public class ProductServlet extends HttpServlet {
         List<String> details = new ArrayList<>();
         if (product.getType().equals("tivi")) {
             details = productDAO.getDetailOfTV(id);
+        } else if (product.getType().equals("dieu-hoa-nhiet-do")) {
+            details = productDAO.getDetailOfDH(id);
+        } else if (product.getType().equals("tu-lanh")) {
+            details = productDAO.getDetailOfTL(id);
+        } else if (product.getType().equals("may-giat")) {
+            details = productDAO.getDetailOfMG(id);
         }
 
         request.setAttribute("product",product);
