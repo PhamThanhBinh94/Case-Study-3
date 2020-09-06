@@ -27,7 +27,7 @@
                 </h2>
             </caption>
             <c:if test="${product != null}">
-                <input type="hidden" name="id" value="<c:out value="${product.getId()}"/> "/>
+                <input type="hidden" name="id" value="<c:out value="${product.getId()}"/>"/>
             </c:if>
             <tr>
                 <th>ID: </th>
@@ -38,37 +38,37 @@
             <tr>
                 <th>Type: </th>
                 <td>
-                    <input type="text" name="type" value="<c:out value="${product.getType()}"/> ">
+                    <input type="text" name="type" value="<c:out value="${product.getType()}"/>">
                 </td>
             </tr>
             <tr>
                 <th>Name: </th>
                 <td>
-                    <input type="text" name="name" value="<c:out value="${product.getName()}"/> ">
+                    <input type="text" name="name" value="<c:out value="${product.getName()}"/>">
                 </td>
             </tr>
             <tr>
                 <th>Brand: </th>
                 <td>
-                    <input type="text" name="brand" value="<c:out value="${product.getBrand()}"/> ">
+                    <input type="text" name="brand" value="<c:out value="${product.getBrand()}"/>">
                 </td>
             </tr>
             <tr>
                 <th>Price: </th>
                 <td>
-                    <input type="text" name="price" value="<c:out value="${product.getPrice()}"/> ">
+                    <input type="text" name="price" value="<c:out value="${product.getPrice()}"/>">
                 </td>
             </tr>
             <tr>
                 <th>Image: </th>
                 <td>
-                    <input type="text" name="image" value="<c:out value="${product.getImage()}"/> ">
+                    <input type="text" name="image" value="<c:out value="${product.getImage()}"/>">
                 </td>
             </tr>
             <tr>
                 <th>Amount: </th>
                 <td>
-                    <input type="text" name="amount" value="<c:out value="${product.getAmount()}"/> ">
+                    <input type="text" name="amount" value="<c:out value="${product.getAmount()}"/>">
                 </td>
             </tr>
             <tr>
