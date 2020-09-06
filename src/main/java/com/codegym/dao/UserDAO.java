@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUserDAO{
-    private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/test?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "123456";
-    private static final String INSERT_USERS_SQL = "INSERT INTO customer"  + "values" +"(?,?,?,?);";
+    private static final String INSERT_USERS_SQL = "INSERT INTO customer "  + "values" +"(?,?,?,?);";
     private static final String SELECT_USER_BY_PHONE = "select * from customer where phone = ?;";
-    private static final String SELECT_ALL_USER = "select * from customer where phone = ?;";
+    private static final String SELECT_ALL_USER = "select * from customer;";
 
     protected Connection getConnection(){
         Connection connection = null;
@@ -69,9 +69,9 @@ public class UserDAO implements IUserDAO{
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
                 String phone = rs.getString("phone");
-                String name = rs.getString("phone");
-                String email = rs.getString("phone");
-                String address = rs.getString("phone");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
                 users.add(new User(phone,name,email,address));
             }
         } catch (SQLException throwables) {
