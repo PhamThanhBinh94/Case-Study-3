@@ -33,7 +33,7 @@
         </tr>
         <c:forEach items="${listProduct}" var="product">
             <tr>
-                <td><c:out value="${product.getId()}"></c:out></td>
+                <td><a href="/products?action=view&id=${product.getId()}"><c:out value="${product.getId()}"></c:out></a></td>
                 <td><c:out value="${product.getType()}"></c:out></td>
                 <td><c:out value="${product.getName()}"></c:out></td>
                 <td><c:out value="${product.getBrand()}"></c:out></td>
