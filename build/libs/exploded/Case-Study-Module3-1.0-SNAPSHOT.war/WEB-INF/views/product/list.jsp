@@ -12,16 +12,20 @@
     <title>Use Management Application</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/list.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <style>
+        header{
+            border-bottom: solid 1px #c0c0c0;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <header class="container">
+<div class="container-fluid">
+    <header class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">ADMIN</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,6 +46,7 @@
                             Sản phẩm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/products">Toàn bộ sản phẩm</a>
                             <a class="dropdown-item" href="/products?type=tivi">Tivi</a>
                             <a class="dropdown-item" href="/products?type=tu-lanh">Tủ lạnh</a>
                             <a class="dropdown-item" href="/products?type=dieu-hoa-nhiet-do">Điều hòa</a>
@@ -64,13 +69,13 @@
     </header>
 </div>
 <center>
-    <h1>Quản lý sản phẩm</h1>
-    <h2>
-        <a href="/products?action=create">Thêm sản phẩm mới</a>
-    </h2>
+    <h1 id="product1">Danh sách sản phẩm</h1>
+    <h5 align="right">
+        <a href="/products?action=create"><input type="button" value="Thêm sản phẩm" class="btn btn-outline-success my-2 my-sm-0" ></a>
+    </h5>
 </center>
 <div align="center">
-    <table border="1" cellpadding="5" class="table">
+    <table id="product2" border="1" cellpadding="5" class="table col-xs-9">
         <tr class="thead-dark">
             <th>ID</th>
             <th>Type</th>
