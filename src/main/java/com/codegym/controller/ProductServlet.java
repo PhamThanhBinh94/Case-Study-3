@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/products")
@@ -42,14 +43,14 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         String type = request.getParameter("type");
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         int price = Integer.parseInt(request.getParameter("price"));
         String image = request.getParameter("image");
         int amount = Integer.parseInt(request.getParameter("amount"));
-        Product product = new Product(type, name, brand, price, image, amount);
+        Product product = new Product(id,type, name, brand, price, image, amount);
         productDAO.updateProduct(product);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/edit.jsp");
         dispatcher.forward(request, response);
@@ -85,13 +86,31 @@ public class ProductServlet extends HttpServlet {
                 case "delete":
                     deleteProduct(request, response);
                     break;
+                case "view":
+                    showProductDetail(request,response);
+                    break;
                 default:
                     listProduct(request, response);
                     break;
             }
-        } catch (SQLException throwables){
-            throwables.printStackTrace();
+        } catch (SQLException e){
+            e.printStackTrace();
         }
+    }
+
+    private void showProductDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Product product = productDAO.selectProduct(id);
+        List<String> details = new ArrayList<>();
+        if (product.getType().equals("tivi")) {
+            details = productDAO.getDetailOfTV(id);
+        }
+
+        request.setAttribute("product",product);
+        request.setAttribute("details",details);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/product_detail.jsp");
+        dispatcher.forward(request,response);
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -108,11 +127,10 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("listProduct", listProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
         dispatcher.forward(request,response);
-
     }
 
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
         Product exitingProduct = productDAO.selectProduct(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/edit.jsp");
         request.setAttribute("product", exitingProduct);
