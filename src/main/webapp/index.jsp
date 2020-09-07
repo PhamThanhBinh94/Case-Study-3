@@ -202,6 +202,7 @@
   <div class="container">
     <!-- row -->
     <div class="row">
+        <p><c:out value="${message}"/></p>
       <!-- shop -->
       <div class="col-md-4 col-xs-6">
         <div class="shop">
@@ -224,7 +225,7 @@
           </div>
           <div class="shop-body">
             <h3>Tủ lạnh</h3>
-            <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/tu-lanh" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
       </div>
@@ -237,8 +238,8 @@
             <img src="./img/shop02.png" alt="">
           </div>
           <div class="shop-body">
-            <h3>Điều hòa</h3>
-            <a href="#" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
+            <h3>Điều hòa nhiệt độ</h3>
+            <a href="/dieu-hoa-nhiet-do" class="cta-btn">Mua ngay <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
       </div>
@@ -308,7 +309,7 @@
                       </div>
                     </div>
                     <div class="add-to-cart">
-                      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                      <button class="add-to-cart-btn" onclick="window.location.href='?action=purchase&id=${product.getId()}'"><i class="fa fa-shopping-cart"></i> add to cart</button>
                     </div>
                   </div>
                   <!-- /product -->

@@ -17,6 +17,8 @@ public class BillDAO implements iBillDAO {
     private static final String UPDATE_BILL_SQL = "update bill set customer_id=?, create_date=?, address=?, status=? where bill_id=?;";
     private static final String GET_TOTAL_BILL = "select sum(unit_price) as total from bill_detail where bill_id=?;";
     private static final String GET_BILL_DETAIL = "select product_id,unit_price,amount from bill_detail where bill_id = ?;";
+    private static final String GET_NEW_BILL_OF_CUSTOMER = "select max(bill_id) as id from bill where customer_id = ?;";
+    private static final String INSERT_BILL_DETAIL = "insert into bill_detail " + "values(?,?,?,?);";
 
     public BillDAO(){
     }
@@ -36,9 +38,9 @@ public class BillDAO implements iBillDAO {
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_BILL_SQL);) {
             preparedStatement.setString(1,bill.getCustomer_id());
-            preparedStatement.setString(1,bill.getCreate_date());
-            preparedStatement.setString(1,bill.getAddress());
-            preparedStatement.setString(1,bill.getStatus());
+            preparedStatement.setString(2,bill.getCreate_date());
+            preparedStatement.setString(3,bill.getAddress());
+            preparedStatement.setString(4,bill.getStatus());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -138,5 +140,33 @@ public class BillDAO implements iBillDAO {
             e.printStackTrace();
         }
         return details;
+    }
+
+    public int getNewBillOfCustomer(String phone) {
+        int bill_id = 0;
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_NEW_BILL_OF_CUSTOMER);){
+            preparedStatement.setString(1,phone);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                bill_id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bill_id;
+    }
+
+    public void insertBillDetail(int bill_id, String product_id, int price, int amount) {
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_BILL_DETAIL);){
+            preparedStatement.setInt(1,bill_id);
+            preparedStatement.setString(2,product_id);
+            preparedStatement.setInt(3,price);
+            preparedStatement.setInt(4,amount);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

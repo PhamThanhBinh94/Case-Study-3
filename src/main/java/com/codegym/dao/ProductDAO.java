@@ -14,7 +14,7 @@ public class ProductDAO implements IProductDAO {
     private static final String INSERT_PRODUCT_SQL = "INSERT INTO product" + "(id,type, name, brand, price, image, amount) VALUES" + "(?,?,?,?,?,?,?);";
     private static final String SELECT_PRODUCT_BY_ID = "select id,type,name,brand,price,image,amount from product where id = ?";
     private static final String SELECT_ALL_PRODUCT = "select * from product";
-    private static final String DELETE_PRODUCT_SQL =  "delete from product where id = ?;";
+    private static final String DELETE_PRODUCT_SQL = "delete from product where id = ?;";
     private static final String UPDATE_PRODUCT_SQL = "update product set type = ?, name = ?, brand = ?, price =?, image= ?, amount = ? where id= ?; ";
     private static final String GET_DETAIL_TV = "select overview, connection, smart_internet, image_sound_technology from tivi_detail where id = ?;";
     private static final String GET_DETAIL_DH = "select feature, technology, general_info from dieuhoa_detail where id=?;";

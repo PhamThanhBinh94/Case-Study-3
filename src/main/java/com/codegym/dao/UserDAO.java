@@ -13,6 +13,7 @@ public class UserDAO implements IUserDAO{
     private static final String INSERT_USERS_SQL = "INSERT INTO customer "  + "values" +"(?,?,?,?);";
     private static final String SELECT_USER_BY_PHONE = "select * from customer where phone = ?;";
     private static final String SELECT_ALL_USER = "select * from customer;";
+    private static final String UPDATE_USER_SQL = "update customer set name=?, email=?, address=? where phone=?;";
 
     protected Connection getConnection(){
         Connection connection = null;
@@ -78,5 +79,19 @@ public class UserDAO implements IUserDAO{
             throwables.printStackTrace();
         }
         return users;
+    }
+
+    @Override
+    public boolean updateUser(User user) throws SQLException {
+        boolean rowUpdate;
+        try (Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER_SQL)) {
+            preparedStatement.setString(1,user.getName());
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3,user.getAddress());
+            preparedStatement.setString(4,user.getPhone());
+            rowUpdate = preparedStatement.executeUpdate() > 0;
+        }
+        return rowUpdate;
     }
 }
