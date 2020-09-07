@@ -142,7 +142,10 @@ public class ProductServlet extends HttpServlet {
                 listProduct = productDAO.selectAllProducts();
                 break;
         }
-
+        List<Product> list = new ArrayList<>();
+        for(int i=0; i<10;i++ ){
+            list.add(listProduct.get(i));
+        }
         request.setAttribute("listProduct", listProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
         dispatcher.forward(request, response);

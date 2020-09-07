@@ -103,16 +103,23 @@
     <img style="margin-left: 200px;"  src="<c:out value="${product.getImage()}" />" width="300px" height="300px"/>
     <p style="clear: both"> Information: </p>
     <table class="table table">
-        <c:forEach var="detail" items="${details}">
-            <c:forTokens items="${detail}" delims="#" var="token">
-                <c:forTokens items="${token}" delims="===" var="token1">
-                    <tr style="border: 1px black solid">
-                        <c:forTokens items="${token1}" delims="__" var="token2">
-                            <td style="border: 1px black solid"><c:out value="${token2}"/></td>
-                        </c:forTokens>
-                    </tr>
+        <c:forEach var="index" begin="${0}" end="${details.size()-1}">
+            <c:if test="${index % 2 == 0}">
+                <tr>
+                    <th colspan="2"><c:out value="${details.get(index)}"/></th>
+                </tr>
+                <c:forTokens var="token" items="${details.get(index+1)}" delims="===">
+                    <c:if test="${token != ' '}">
+                        <tr>
+                            <c:forTokens var="token1" items="${token}" delims="__">
+                                <c:if test="${token1 != ' '}">
+                                    <td><c:out value="${token1}"/></td>
+                                </c:if>
+                            </c:forTokens>
+                        </tr>
+                    </c:if>
                 </c:forTokens>
-            </c:forTokens>
+            </c:if>
         </c:forEach>
     </table>
 </div>

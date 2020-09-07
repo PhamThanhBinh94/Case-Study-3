@@ -137,13 +137,17 @@ public class ProductDAO implements IProductDAO {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                String overview = "Tổng quan#" + rs.getString("overview");
-                String connect = "Kết nối#" + rs.getString("connection");
-                String smart_internet = "Smart TV/Internet TV#" + rs.getString("smart_internet");
-                String tech = "Công nghệ âm thanh, hình ảnh#" + rs.getString("image_sound_technology");
+                details.add("Tổng quan");
+                String overview = rs.getString("overview");
                 details.add(overview.replaceAll("<info>","==="));
+                details.add("Kết nối");
+                String connect = rs.getString("connection");
                 details.add(connect.replaceAll("<info>","==="));
+                details.add("Smart TV/Internet TV");
+                String smart_internet = rs.getString("smart_internet");
                 details.add(smart_internet.replaceAll("<info>","==="));
+                details.add("Công nghệ âm thanh, hình ảnh");
+                String tech = rs.getString("image_sound_technology");
                 details.add(tech.replaceAll("<info>","==="));
             }
         } catch (SQLException e) {
@@ -160,11 +164,14 @@ public class ProductDAO implements IProductDAO {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                String feature = "Đặc điểm#" + rs.getString("feature");
-                String technology = "Công nghệ#" + rs.getString("technology");
-                String general_info = "Thông tin chung#" + rs.getString("general_info");
+                details.add("Đặc điểm");
+                String feature = rs.getString("feature");
                 details.add(feature.replaceAll("<info>","==="));
+                details.add("Công nghệ");
+                String technology = rs.getString("technology");
                 details.add(technology.replaceAll("<info>","==="));
+                details.add("Thông tin chung");
+                String general_info = rs.getString("general_info");
                 details.add(general_info.replaceAll("<info>","==="));
             }
         } catch (SQLException e) {
@@ -181,9 +188,11 @@ public class ProductDAO implements IProductDAO {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                String feature = "Đặc điểm#" + rs.getString("feature");
-                String general_info = "Thông tin chung#" + rs.getString("general_info");
+                details.add("Đặc điểm");
+                String feature = rs.getString("feature");
                 details.add(feature.replaceAll("<info>","==="));
+                details.add("Thông tin chung");
+                String general_info = rs.getString("general_info");
                 details.add(general_info.replaceAll("<info>","==="));
             }
         } catch (SQLException e) {
@@ -200,11 +209,14 @@ public class ProductDAO implements IProductDAO {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                String feature = "Đặc điểm#" + rs.getString("feature");
-                String technology = "Công nghệ#" + rs.getString("technology");
-                String general_info = "Thông tin chung#" + rs.getString("general_info");
+                details.add("Đặc điểm");
+                String feature = rs.getString("feature");
                 details.add(feature.replaceAll("<info>","==="));
+                details.add("Công nghệ");
+                String technology = rs.getString("technology");
                 details.add(technology.replaceAll("<info>","==="));
+                details.add("Thông tin chung");
+                String general_info = rs.getString("general_info");
                 details.add(general_info.replaceAll("<info>","==="));
             }
         } catch (SQLException e) {
