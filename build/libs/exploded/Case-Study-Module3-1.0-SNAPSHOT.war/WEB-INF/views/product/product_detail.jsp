@@ -20,6 +20,9 @@
         header{
             border-bottom: solid 1px #c0c0c0;
         }
+        table{
+            border-collapse: collapse;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +102,7 @@
     </table>
     <img style="margin-left: 200px;"  src="<c:out value="${product.getImage()}" />" width="300px" height="300px"/>
     <p style="clear: both"> Information: </p>
-    <table>
+    <table class="table table">
         <c:forEach var="detail" items="${details}">
             <c:forTokens items="${detail}" delims="#" var="token">
                 <c:forTokens items="${token}" delims="===" var="token1">
