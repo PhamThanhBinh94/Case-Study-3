@@ -181,8 +181,8 @@
             <ul class="main-nav nav navbar-nav">
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/tivi">Tivi</a></li>
-                <li class="active"><a href="/tu-lanh">Tủ Lạnh</a></li>
-                <li><a href="/dieu-hoa-nhiet-do">Điều hòa</a></li>
+                <li><a href="/tu-lanh">Tủ Lạnh</a></li>
+                <li class="active"><a href="/dieu-hoa-nhiet-do">Điều hòa</a></li>
                 <li><a href="/may-giat">Máy giặt</a></li>
                 <li><a href="#">Lò vi sóng</a></li>
                 <li><a href="#">Bình nóng lạnh</a></li>
@@ -446,7 +446,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category"><c:out value="${products.get(index).getBrand()}"/></p>
-                                    <h3 class="product-name"><a href="#"><c:out value="${products.get(index).getName()}"/></a></h3>
+                                    <h3 class="product-name"><a href="/dieu-hoa-nhiet-do?action=view&id=${products.get(index).getId()}"><c:out value="${products.get(index).getName()}"/></a></h3>
                                     <h4 class="product-price"><c:out value="${products.get(index).getPrice()}"/> <del class="product-old-price"><c:out value="${products.get(index).getPrice()}"/></del></h4>
                                     <div class="product-rating">
                                         <i class="fa fa-star"></i>

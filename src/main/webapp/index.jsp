@@ -50,9 +50,9 @@
   <div id="top-header">
     <div class="container">
       <ul class="header-links pull-left">
-        <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+        <li><a href="#"><i class="fa fa-phone"></i> +84-855000710 </a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> electro@gmail.com</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> 276 Đại Từ, Hoàng Mai, Hà Nội</a></li>
       </ul>
       <ul class="header-links pull-right">
         <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
@@ -83,7 +83,7 @@
           <div class="header-search">
             <form>
               <select class="input-select">
-                <option value="0">Toàn bộ sản phẩm</option>
+                <option value="0">Sản phẩm</option>
                 <option value="1">Tivi</option>
                 <option value="1">Tủ lạnh</option>
                 <option value="1">Điều hòa</option>
@@ -292,7 +292,7 @@
                     </div>
                     <div class="product-body">
                       <p class="product-category"><c:out value="${product.getBrand()}"/></p>
-                      <h3 class="product-name"><a href="#"><c:out value="${product.getName()}"/></a></h3>
+                      <h3 class="product-name"><a href="/tivi?action=view&id=${product.getId()}"><c:out value="${product.getName()}"/></a></h3>
                       <h4 class="product-price"><c:out value="${product.getPrice()}"/> <del class="product-old-price"><c:out value="${product.getPrice()}"/></del></h4>
                       <div class="product-rating">
                         <i class="fa fa-star"></i>

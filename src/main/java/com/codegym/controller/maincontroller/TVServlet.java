@@ -31,17 +31,32 @@ public class TVServlet extends HttpServlet {
         if (action == null) action = "";
 
         switch (action) {
+            case "view":
+                showDetailOfTV(request,response);
+                break;
             default:
                 showListOfTV(request,response);
                 break;
         }
     }
 
+    private void showDetailOfTV(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Product product = productDAO.selectProduct(id);
+        List<String> details = productDAO.getDetailOfTV(id);
+
+        request.setAttribute("product",product);
+        request.setAttribute("details",details);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/main/product_detail.jsp");
+        dispatcher.forward(request,response);
+    }
+
     private void showListOfTV(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products;
         products = productDAO.getProductNewByType("tivi",20);
         request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/main/tivi.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/main/tivi.jsp");
         dispatcher.forward(request,response);
     }
 }

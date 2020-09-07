@@ -52,7 +52,7 @@ public class ProductServlet extends HttpServlet {
         int amount = Integer.parseInt(request.getParameter("amount"));
         Product product = new Product(id,type, name, brand, price, image, amount);
         productDAO.updateProduct(product);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/edit.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -66,7 +66,7 @@ public class ProductServlet extends HttpServlet {
         int amount = Integer.parseInt(request.getParameter("amount"));
         Product newProduct = new Product(id,type, name, brand, price, image, amount);
         productDAO.insertProduct(newProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/create.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -115,7 +115,7 @@ public class ProductServlet extends HttpServlet {
         request.setAttribute("product",product);
         request.setAttribute("details",details);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/product_detail.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/product_detail.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -147,7 +147,7 @@ public class ProductServlet extends HttpServlet {
             list.add(listProduct.get(i));
         }
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/list.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -156,20 +156,20 @@ public class ProductServlet extends HttpServlet {
         productDAO.deleteProduct(id);
         List<Product> listProduct = productDAO.selectAllProducts();
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/list.jsp");
         dispatcher.forward(request,response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         Product exitingProduct = productDAO.selectProduct(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/edit.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/edit.jsp");
         request.setAttribute("product", exitingProduct);
         dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/product/create.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/product/create.jsp");
         dispatcher.forward(request, response);
     }
 

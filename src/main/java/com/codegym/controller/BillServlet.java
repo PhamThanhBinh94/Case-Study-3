@@ -56,7 +56,7 @@ public class BillServlet extends javax.servlet.http.HttpServlet {
         request.setAttribute("details",details);
         request.setAttribute("total",total);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/bill/bill_detail.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/bill/bill_detail.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -69,7 +69,7 @@ public class BillServlet extends javax.servlet.http.HttpServlet {
         }
         request.setAttribute("bills", bills);
         request.setAttribute("totals",totals);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/bill/list_bill.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/bill/list_bill.jsp");
         dispatcher.forward(request,response);
     }
 }

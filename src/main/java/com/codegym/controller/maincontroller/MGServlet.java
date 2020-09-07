@@ -30,17 +30,32 @@ public class MGServlet extends HttpServlet {
         if (action == null) action = "";
 
         switch (action) {
+            case "view":
+                showDetailOfTL(request,response);
+                break;
             default:
                 showListOfTL(request,response);
                 break;
         }
     }
 
+    private void showDetailOfTL(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String id = request.getParameter("id");
+        Product product = productDAO.selectProduct(id);
+        List<String> details = productDAO.getDetailOfMG(id);
+
+        request.setAttribute("product",product);
+        request.setAttribute("details",details);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/main/product_detail.jsp");
+        dispatcher.forward(request,response);
+    }
+
     private void showListOfTL(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products;
         products = productDAO.getProductNewByType("may-giat",20);
         request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/main/may_giat.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("views/main/may_giat.jsp");
         dispatcher.forward(request,response);
     }
 }
