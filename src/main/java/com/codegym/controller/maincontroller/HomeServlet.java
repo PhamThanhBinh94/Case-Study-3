@@ -46,13 +46,6 @@ public class HomeServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-//        String type = request.getParameter("type");
-//        List<Product> products;
-//        products = productDAO.getProductNewByType(type,6);
-//        request.setAttribute("products",products);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-//        dispatcher.forward(request,response);
     }
 
     private void purchaseProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
@@ -111,9 +104,14 @@ public class HomeServlet extends HttpServlet {
     }
 
     private void showNewProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> products;
-        products = productDAO.getProductNewByType("tivi",6);
-        request.setAttribute("products",products);
+        List<Product> list_TV = productDAO.getProductNewByType("tivi",6);
+        List<Product> list_TL = productDAO.getProductNewByType("tu-lanh",6);
+        List<Product> list_DH = productDAO.getProductNewByType("dieu-hoa-nhiet-do",6);
+        List<Product> list_MG = productDAO.getProductNewByType("may-giat",6);
+        request.setAttribute("list_TV",list_TV);
+        request.setAttribute("list_TL",list_TL);
+        request.setAttribute("list_DH",list_DH);
+        request.setAttribute("list_MG",list_MG);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request,response);
     }
