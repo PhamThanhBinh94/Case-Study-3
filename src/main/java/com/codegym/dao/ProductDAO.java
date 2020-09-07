@@ -20,11 +20,8 @@ public class ProductDAO implements IProductDAO {
     private static final String GET_DETAIL_DH = "select feature, technology, general_info from dieuhoa_detail where id=?;";
     private static final String GET_DETAIL_TL = "select feature, general_info from tulanh_detail where id=?;";
     private static final String GET_DETAIL_MG = "select feature, technology, general_info from maygiat_detail where id=?;";
-<<<<<<< HEAD
     private static final String GET_PRODUCT_NEW_BY_TYPE = "select * from product where type=? order by amount desc limit ?;";
-=======
     private static final String SELECT_BY_TYPE = "select * from product where type= ?;";
->>>>>>> 13dbd232ba6303cabc687c4fa37e9174eb68fe3e
 
     public ProductDAO() {
     }
@@ -218,7 +215,6 @@ public class ProductDAO implements IProductDAO {
         return details;
     }
 
-<<<<<<< HEAD
     public List<Product> getProductNewByType(String type, int number) {
         List<Product> products = new ArrayList<>();
         try (Connection connection = getConnection();
@@ -242,7 +238,6 @@ public class ProductDAO implements IProductDAO {
         return products;
     }
 
-=======
     public List<Product> selectProductByType(String type) {
         List<Product> products = new ArrayList<>();
         try(Connection connection = getConnection();
@@ -264,6 +259,5 @@ public class ProductDAO implements IProductDAO {
         }
         return products;
     }
->>>>>>> 13dbd232ba6303cabc687c4fa37e9174eb68fe3e
 }
 
