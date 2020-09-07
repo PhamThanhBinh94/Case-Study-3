@@ -20,6 +20,7 @@ public class ProductDAO implements IProductDAO {
     private static final String GET_DETAIL_DH = "select feature, technology, general_info from dieuhoa_detail where id=?;";
     private static final String GET_DETAIL_TL = "select feature, general_info from tulanh_detail where id=?;";
     private static final String GET_DETAIL_MG = "select feature, technology, general_info from maygiat_detail where id=?;";
+    private static final String GET_PRODUCT_NEW_BY_TYPE = "select * from product where type=? order by amount desc limit ?;";
     private static final String SELECT_BY_TYPE = "select * from product where type= ?;";
 
     public ProductDAO() {
@@ -35,6 +36,7 @@ public class ProductDAO implements IProductDAO {
         }
         return connection;
     }
+
     @Override
     public void insertProduct(Product product) {
         try(Connection connection = getConnection();
@@ -223,6 +225,29 @@ public class ProductDAO implements IProductDAO {
             e.printStackTrace();
         }
         return details;
+    }
+
+    public List<Product> getProductNewByType(String type, int number) {
+        List<Product> products = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_PRODUCT_NEW_BY_TYPE);) {
+            preparedStatement.setString(1,type);
+            preparedStatement.setInt(2,number);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String name = rs.getString("name");
+                String brand = rs.getString("brand");
+                String image = rs.getString("image");
+                int price = rs.getInt("price");
+                int amount = rs.getInt("amount");
+                products.add(new Product(id,type,name,brand,price,image,amount));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
     }
 
     public List<Product> selectProductByType(String type) {
