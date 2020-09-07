@@ -71,7 +71,7 @@
         <!-- LOGO -->
         <div class="col-md-3">
           <div class="header-logo">
-            <a href="#" class="logo">
+            <a href="/" class="logo">
               <img src="./img/logo.png" alt="">
             </a>
           </div>
@@ -83,9 +83,11 @@
           <div class="header-search">
             <form>
               <select class="input-select">
-                <option value="0">All Categories</option>
-                <option value="1">Category 01</option>
-                <option value="1">Category 02</option>
+                <option value="0">Toàn bộ sản phẩm</option>
+                <option value="1">Tivi</option>
+                <option value="1">Tủ lạnh</option>
+                <option value="1">Điều hòa</option>
+                <option value="1">Máy giặt</option>
               </select>
               <input class="input" placeholder="Search here">
               <button class="search-btn">Search</button>
