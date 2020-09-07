@@ -178,11 +178,11 @@
     <div id="responsive-nav">
       <!-- NAV -->
       <ul class="main-nav nav navbar-nav">
-        <li class="active"><a href="localhost:8080/">Trang chủ</a></li>
+        <li class="active"><a href="/">Trang chủ</a></li>
         <li><a href="/tivi">Tivi</a></li>
-        <li><a href="#">Tủ Lạnh</a></li>
-        <li><a href="#">Điều hòa</a></li>
-        <li><a href="#">Máy giặt</a></li>
+        <li><a href="/tu-lanh">Tủ Lạnh</a></li>
+        <li><a href="/dieu-hoa-nhiet-do">Điều hòa</a></li>
+        <li><a href="/may-giat">Máy giặt</a></li>
         <li><a href="#">Lò vi sóng</a></li>
         <li><a href="#">Bình nóng lạnh</a></li>
       </ul>
