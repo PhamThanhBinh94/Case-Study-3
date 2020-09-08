@@ -51,9 +51,9 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> +84-855000710 </a></li>
+                <li><a href="#"><i class="fa fa-envelope-o"></i> electro@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> 276 Đại Từ, Hoàng Mai, Hà Nội</a></li>
             </ul>
             <ul class="header-links pull-right">
                 <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
@@ -72,7 +72,7 @@
                 <!-- LOGO -->
                 <div class="col-md-3">
                     <div class="header-logo">
-                        <a href="#" class="logo">
+                        <a href="/" class="logo">
                             <img src="./img/logo.png" alt="">
                         </a>
                     </div>
@@ -446,7 +446,7 @@
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category"><c:out value="${products.get(index).getBrand()}"/></p>
-                                    <h3 class="product-name"><a href="#"><c:out value="${products.get(index).getName()}"/></a></h3>
+                                    <h3 class="product-name"><a href="/tu-lanh?action=view&id=${products.get(index).getId()}"><c:out value="${products.get(index).getName()}"/></a></h3>
                                     <h4 class="product-price"><c:out value="${products.get(index).getPrice()}"/> <del class="product-old-price"><c:out value="${products.get(index).getPrice()}"/></del></h4>
                                     <div class="product-rating">
                                         <i class="fa fa-star"></i>
@@ -462,7 +462,7 @@
                                     </div>
                                 </div>
                                 <div class="add-to-cart">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <button class="add-to-cart-btn" onclick="window.location.href='/?action=purchase&id=${products.get(index).getId()}'"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                 </div>
                             </div>
                         </div>
@@ -803,25 +803,26 @@
             <div class="row">
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                        <h3 class="footer-title">Liên hệ</h3>
+                        <p>Công ty cổ phần thương mại Electro</p>
                         <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                            <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                            <li><a href="#"><i class="fa fa-map-marker"></i>276 Đại Từ, Hoàng Mai, Hà Nội</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>+84-855000710</a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>electro@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-xs-6">
                     <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
+                        <h3 class="footer-title">Danh mục sản phẩm</h3>
                         <ul class="footer-links">
-                            <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">Laptops</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Cameras</a></li>
-                            <li><a href="#">Accessories</a></li>
+                            <li><a href="/tivi">Tivi</a></li>
+                            <li><a href="/tu-lanh">Tủ Lạnh</a></li>
+                            <li><a href="/dieu-hoa-nhiet-do">Điều hòa</a></li>
+                            <li><a href="/may-giat">Máy giặt</a></li>
+                            <li><a href="#">Lò vi sóng</a></li>
+                            <li><a href="#">Bình nóng lạnh</a></li>
                         </ul>
                     </div>
                 </div>

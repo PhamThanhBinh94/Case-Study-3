@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Pham Tuyen
-  Date: 9/6/2020
-  Time: 10:22 AM
+  Date: 9/7/2020
+  Time: 4:47 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -179,8 +179,8 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li><a href="/">Trang chủ</a></li>
-                <li class="active"><a href="/tivi">Tivi</a></li>
+                <li class="active"><a href="/">Trang chủ</a></li>
+                <li><a href="/tivi">Tivi</a></li>
                 <li><a href="/tu-lanh">Tủ Lạnh</a></li>
                 <li><a href="/dieu-hoa-nhiet-do">Điều hòa</a></li>
                 <li><a href="/may-giat">Máy giặt</a></li>
@@ -202,11 +202,10 @@
         <!-- row -->
         <div class="row">
             <div class="col-md-12">
+                <h3 class="breadcrumb-header">Mua hàng</h3>
                 <ul class="breadcrumb-tree">
                     <li><a href="/">Trang chủ</a></li>
-<%--                    <li><a href="#">All Categories</a></li>--%>
-<%--                    <li><a href="#">Accessories</a></li>--%>
-                    <li class="active">Tivi</li>
+                    <li class="active">Mua hàng</li>
                 </ul>
             </div>
         </div>
@@ -222,268 +221,178 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <!-- ASIDE -->
-            <div id="aside" class="col-md-3">
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Loại Tivi</h3>
-                    <div class="checkbox-filter">
-
+            <form method="post" action="/">
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">Thông tin khách hàng</h3>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="customer-name" placeholder="Họ và tên">
+                    </div>
+<%--                    <div class="form-group">--%>
+<%--                        <input class="input" type="text" name="last-name" placeholder="Last Name">--%>
+<%--                    </div>--%>
+                    <div class="form-group">
+                        <input class="input" type="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="address" placeholder="Địa chỉ">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="district" placeholder="Quận/Huyện">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" type="text" name="city" placeholder="Tỉnh/Thành phố">
+                    </div>
+<%--                    <div class="form-group">--%>
+<%--                        <input class="input" type="text" name="zip-code" placeholder="ZIP Code">--%>
+<%--                    </div>--%>
+                    <div class="form-group">
+                        <input class="input" type="tel" name="phone" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
                         <div class="input-checkbox">
-                            <input type="checkbox" id="category-1">
-                            <label for="category-1">
+                            <input type="checkbox" id="create-account">
+                            <label for="create-account">
                                 <span></span>
-                                Smart Tivi
-                                <small>(120)</small>
+                                Create Account?
                             </label>
-                        </div>
-
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="category-2">
-                            <label for="category-2">
-                                <span></span>
-                                Tivi Ultra HD
-                                <small>(740)</small>
-                            </label>
-                        </div>
-
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="category-3">
-                            <label for="category-3">
-                                <span></span>
-                                Tivi LED thường
-                                <small>(1450)</small>
-                            </label>
-                        </div>
-
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="category-4">
-                            <label for="category-4">
-                                <span></span>
-                                OLED Tivi
-                                <small>(578)</small>
-                            </label>
-                        </div>
-
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="category-5">
-                            <label for="category-5">
-                                <span></span>
-                                TV 4K Ultra HD
-                                <small>(120)</small>
-                            </label>
-                        </div>
-
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="category-6">
-                            <label for="category-6">
-                                <span></span>
-                                TV Android
-                                <small>(740)</small>
-                            </label>
+                            <div class="caption">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                                <input class="input" type="password" name="password" placeholder="Enter Your Password">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- /aside Widget -->
+                <!-- /Billing Details -->
 
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Price</h3>
-                    <div class="price-filter">
-                        <div id="price-slider"></div>
-                        <div class="input-number price-min">
-                            <input id="price-min" type="number">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
+                <!-- Shiping Details -->
+                <div class="shiping-details">
+                    <div class="section-title">
+                        <h3 class="title">Địa chỉ giao hàng</h3>
+                    </div>
+<%--                    <div class="input-checkbox">--%>
+<%--                        <input type="checkbox" id="shiping-address">--%>
+<%--                        <label for="shiping-address">--%>
+<%--                            <span></span>--%>
+<%--                            Ship to a diffrent address?--%>
+<%--                        </label>--%>
+<%--                        <div class="caption">--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="text" name="first-name" placeholder="First Name">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="text" name="last-name" placeholder="Last Name">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="email" name="email" placeholder="Email">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="text" name="address" placeholder="Address">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="text" name="city" placeholder="City">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="text" name="country" placeholder="Country">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="text" name="zip-code" placeholder="ZIP Code">--%>
+<%--                            </div>--%>
+<%--                            <div class="form-group">--%>
+<%--                                <input class="input" type="tel" name="tel" placeholder="Telephone">--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+                </div>
+                <!-- /Shiping Details -->
+
+                <!-- Order notes -->
+                <div class="order-notes">
+                    <textarea name="ship-address" class="input" placeholder="Số nhà, đường, quận/huyện, tỉnh/thành phố"></textarea>
+                </div>
+                <!-- /Order notes -->
+            </div>
+
+            <!-- Order Details -->
+            <div class="col-md-5 order-details">
+                <div class="section-title text-center">
+                    <h3 class="title">Đơn hàng</h3>
+                </div>
+                <div class="order-summary">
+                    <div class="order-col">
+                        <div><strong>Sản phẩm</strong></div>
+                        <div><strong>Đơn giá</strong></div>
+                    </div>
+                    <div class="order-products">
+                        <div class="order-col">
+                            <input type="hidden" name="amount" value="${amount}"/>
+                            <input type="hidden" name="productID" value="${product.getId()}"/>
+                            <div><c:out value="${amount}"/>x <c:out value="${product.getName()}"/></div>
+                            <input type="hidden" name="price" value="${product.getPrice()}"/>
+                            <div><c:out value="${product.getPrice()}"/> VND</div>
                         </div>
-                        <span>-</span>
-                        <div class="input-number price-max">
-                            <input id="price-max" type="number">
-                            <span class="qty-up">+</span>
-                            <span class="qty-down">-</span>
-                        </div>
+<%--                        <div class="order-col">--%>
+<%--                            <div>2x Product Name Goes Here</div>--%>
+<%--                            <div>$980.00</div>--%>
+<%--                        </div>--%>
+                    </div>
+                    <div class="order-col">
+                        <div>Tiền vận chuyển</div>
+                        <div><strong>Miễn phí</strong></div>
+                    </div>
+                    <div class="order-col">
+                        <div><strong>Tổng tiền</strong></div>
+                        <div><strong class="order-total"><c:out value="${product.getPrice()}"/> VND</strong></div>
                     </div>
                 </div>
-                <!-- /aside Widget -->
-
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Hãng sản xuất</h3>
-                    <div class="checkbox-filter">
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="brand-1">
-                            <label for="brand-1">
-                                <span></span>
-                                SAMSUNG
-                                <small>(578)</small>
-                            </label>
-                        </div>
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="brand-2">
-                            <label for="brand-2">
-                                <span></span>
-                                LG
-                                <small>(125)</small>
-                            </label>
-                        </div>
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="brand-3">
-                            <label for="brand-3">
-                                <span></span>
-                                SONY
-                                <small>(755)</small>
-                            </label>
-                        </div>
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="brand-4">
-                            <label for="brand-4">
-                                <span></span>
-                                ASANZO
-                                <small>(578)</small>
-                            </label>
-                        </div>
-                        <div class="input-checkbox">
-                            <input type="checkbox" id="brand-5">
-                            <label for="brand-5">
-                                <span></span>
-                                TCL
-                                <small>(125)</small>
-                            </label>
-                        </div>
-<%--                        <div class="input-checkbox">--%>
-<%--                            <input type="checkbox" id="brand-6">--%>
-<%--                            <label for="brand-6">--%>
-<%--                                <span></span>--%>
-<%--                                SONY--%>
-<%--                                <small>(755)</small>--%>
-<%--                            </label>--%>
+                <div class="payment-method">
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-1">
+                        <label for="payment-1">
+                            <span></span>
+                            Thanh toán trực tiếp
+                        </label>
+<%--                        <div class="caption">--%>
+<%--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>--%>
+<%--                        </div>--%>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-2">
+                        <label for="payment-2">
+                            <span></span>
+                            Thẻ ATM, VISA, MASTER
+                        </label>
+<%--                        <div class="caption">--%>
+<%--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>--%>
+<%--                        </div>--%>
+                    </div>
+                    <div class="input-radio">
+                        <input type="radio" name="payment" id="payment-3">
+                        <label for="payment-3">
+                            <span></span>
+                            Chuyển khoản ngân hàng
+                        </label>
+<%--                        <div class="caption">--%>
+<%--                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>--%>
 <%--                        </div>--%>
                     </div>
                 </div>
-                <!-- /aside Widget -->
-
-                <!-- aside Widget -->
-                <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+                <div class="input-checkbox">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">
+                        <span></span>
+                        Tôi đồng ý với quy chế hoạt động chung và quy định bảo mật thông tin cá nhân
+                    </label>
                 </div>
-                <!-- /aside Widget -->
+                <input type="hidden" name="action" value="purchase"/>
+                <button type="submit" class="primary-btn order-submit">Mua hàng</button>
             </div>
-            <!-- /ASIDE -->
+            <!-- /Order Details -->
+            </form>
 
-            <!-- STORE -->
-            <div id="store" class="col-md-9">
-                <!-- store top filter -->
-                <div class="store-filter clearfix">
-                    <div class="store-sort">
-                        <label>
-                            Sort By:
-                            <select class="input-select">
-                                <option value="0">Popular</option>
-                                <option value="1">Position</option>
-                            </select>
-                        </label>
-
-                        <label>
-                            Show:
-                            <select class="input-select">
-                                <option value="0">20</option>
-                                <option value="1">50</option>
-                            </select>
-                        </label>
-                    </div>
-                    <ul class="store-grid">
-                        <li class="active"><i class="fa fa-th"></i></li>
-                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-                    </ul>
-                </div>
-                <!-- /store top filter -->
-
-                <!-- store products -->
-                <div class="row">
-                    <c:forEach var="index" begin="${0}" end="${products.size()-1}">
-                        <!-- product -->
-                        <div class="col-md-4 col-xs-6">
-                            <div class="product">
-                                <div class="product-img">
-                                    <img src="<c:out value="${products.get(index).getImage()}"/>" alt="">
-                                    <div class="product-label">
-                                        <span class="sale">-30%</span>
-                                        <span class="new">NEW</span>
-                                    </div>
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category"><c:out value="${products.get(index).getBrand()}"/></p>
-                                    <h3 class="product-name"><a href="/tivi?action=view&id=${products.get(index).getId()}"><c:out value="${products.get(index).getName()}"/></a></h3>
-                                    <h4 class="product-price"><c:out value="${products.get(index).getPrice()}"/> <del class="product-old-price"><c:out value="${products.get(index).getPrice()}"/></del></h4>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <div class="product-btns">
-                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                    </div>
-                                </div>
-                                <div class="add-to-cart">
-                                    <button class="add-to-cart-btn" onclick="window.location.href='/?action=purchase&id=${products.get(index).getId()}'"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /product -->
-                    </c:forEach>
-                </div>
-                <!-- /store products -->
-
-                <!-- store bottom filter -->
-                <div class="store-filter clearfix">
-                    <span class="store-qty">Showing 20-100 products</span>
-                    <ul class="store-pagination">
-                        <li class="active">1</li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
-                </div>
-                <!-- /store bottom filter -->
-            </div>
-            <!-- /STORE -->
         </div>
         <!-- /row -->
     </div>

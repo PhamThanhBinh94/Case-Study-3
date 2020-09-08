@@ -10,6 +10,13 @@ public class Bill {
     public Bill() {
     }
 
+    public Bill(String customer_id, String create_date, String address, String status) {
+        this.customer_id = customer_id;
+        this.create_date = create_date;
+        this.address = address;
+        this.status = status;
+    }
+
     public Bill(int bill_id, String customer_id, String create_date, String address, String status) {
         this.bill_id = bill_id;
         this.customer_id = customer_id;
