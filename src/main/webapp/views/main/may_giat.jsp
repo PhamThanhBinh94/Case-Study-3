@@ -203,10 +203,10 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">All Categories</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li class="active">Headphones (227,490 Results)</li>
+                    <li><a href="#">TRANG CHỦ</a></li>
+<%--                    <li><a href="#">TỦ LẠNH</a></li>--%>
+<%--                    <li><a href="#"></a></li>--%>
+                    <li class="active">MÁY GIẶT</li>
                 </ul>
             </div>
         </div>
@@ -226,14 +226,14 @@
             <div id="aside" class="col-md-3">
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Categories</h3>
+                    <h3 class="aside-title">LOẠI MÁY GIẶT</h3>
                     <div class="checkbox-filter">
 
                         <div class="input-checkbox">
                             <input type="checkbox" id="category-1">
                             <label for="category-1">
                                 <span></span>
-                                Laptops
+                                Máy giặt lồng đứng
                                 <small>(120)</small>
                             </label>
                         </div>
@@ -242,7 +242,7 @@
                             <input type="checkbox" id="category-2">
                             <label for="category-2">
                                 <span></span>
-                                Smartphones
+                                Máy giặt lồng ngang
                                 <small>(740)</small>
                             </label>
                         </div>
@@ -251,7 +251,7 @@
                             <input type="checkbox" id="category-3">
                             <label for="category-3">
                                 <span></span>
-                                Cameras
+                                Máy giặt lồng đôi
                                 <small>(1450)</small>
                             </label>
                         </div>
@@ -260,7 +260,7 @@
                             <input type="checkbox" id="category-4">
                             <label for="category-4">
                                 <span></span>
-                                Accessories
+                                Máy giặt Addwash
                                 <small>(578)</small>
                             </label>
                         </div>
@@ -269,7 +269,7 @@
                             <input type="checkbox" id="category-5">
                             <label for="category-5">
                                 <span></span>
-                                Laptops
+                                Máy giặt Inverter
                                 <small>(120)</small>
                             </label>
                         </div>
@@ -278,7 +278,7 @@
                             <input type="checkbox" id="category-6">
                             <label for="category-6">
                                 <span></span>
-                                Smartphones
+                                Máy giặt có sấy
                                 <small>(740)</small>
                             </label>
                         </div>
@@ -288,7 +288,7 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Price</h3>
+                    <h3 class="aside-title">GIÁ</h3>
                     <div class="price-filter">
                         <div id="price-slider"></div>
                         <div class="input-number price-min">
@@ -308,7 +308,7 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Brand</h3>
+                    <h3 class="aside-title">THƯƠNG HIỆU</h3>
                     <div class="checkbox-filter">
                         <div class="input-checkbox">
                             <input type="checkbox" id="brand-1">
@@ -330,7 +330,7 @@
                             <input type="checkbox" id="brand-3">
                             <label for="brand-3">
                                 <span></span>
-                                SONY
+                                HITACHI
                                 <small>(755)</small>
                             </label>
                         </div>
@@ -338,7 +338,7 @@
                             <input type="checkbox" id="brand-4">
                             <label for="brand-4">
                                 <span></span>
-                                SAMSUNG
+                                TOSHIBA
                                 <small>(578)</small>
                             </label>
                         </div>
@@ -346,7 +346,7 @@
                             <input type="checkbox" id="brand-5">
                             <label for="brand-5">
                                 <span></span>
-                                LG
+                                MIDEA
                                 <small>(125)</small>
                             </label>
                         </div>
@@ -354,7 +354,7 @@
                             <input type="checkbox" id="brand-6">
                             <label for="brand-6">
                                 <span></span>
-                                SONY
+                                AQUA
                                 <small>(755)</small>
                             </label>
                         </div>
@@ -364,39 +364,41 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
+                    <h3 class="aside-title">BÁN CHẠY NHẤT</h3>
+                    <c:forEach var="index" begin="0" end="2">
+                        <div class="product-widget">
+                            <div class="product-img">
+                                <img src="<c:out value="${products.get(index).getImage()}"/>" alt="">
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">Category</p>
+                                <h3 class="product-name"><a href="/may-giat?action=view&id=${products.get(index).getId()}"><c:out value="${products.get(index).getName()}"/></a></h3>
+                                <h4 class="product-price"><c:out value="${products.get(index).getPrice()}"/> <del class="product-old-price<c:out value="${products.get(index).getPrice()}"/>"></del></h4>
+                            </div>
                         </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+                    </c:forEach>
 
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+<%--                    <div class="product-widget">--%>
+<%--                        <div class="product-img">--%>
+<%--                            <img src="./img/product02.png" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="product-body">--%>
+<%--                            <p class="product-category">Category</p>--%>
+<%--                            <h3 class="product-name"><a href="#">product name goes here</a></h3>--%>
+<%--                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+<%--                    <div class="product-widget">--%>
+<%--                        <div class="product-img">--%>
+<%--                            <img src="./img/product03.png" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="product-body">--%>
+<%--                            <p class="product-category">Category</p>--%>
+<%--                            <h3 class="product-name"><a href="#">product name goes here</a></h3>--%>
+<%--                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
                 <!-- /aside Widget -->
             </div>

@@ -288,7 +288,7 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Price</h3>
+                    <h3 class="aside-title">GIÁ</h3>
                     <div class="price-filter">
                         <div id="price-slider"></div>
                         <div class="input-number price-min">
@@ -364,39 +364,41 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
+                    <h3 class="aside-title">BÁN CHẠY NHẤT</h3>
+                    <c:forEach var="index" begin="0" end="2">
+                        <div class="product-widget">
+                            <div class="product-img">
+                                <img src="<c:out value="${products.get(index).getImage()}"/>" alt="">
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">Category</p>
+                                <h3 class="product-name"><a href="/tivi?action=view&id=${products.get(index).getId()}"><c:out value="${products.get(index).getName()}"/></a></h3>
+                                <h4 class="product-price"><c:out value="${products.get(index).getPrice()}"/> <del class="product-old-price<c:out value="${products.get(index).getPrice()}"/>"></del></h4>
+                            </div>
                         </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+                    </c:forEach>
 
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+<%--                    <div class="product-widget">--%>
+<%--                        <div class="product-img">--%>
+<%--                            <img src="./img/product02.png" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="product-body">--%>
+<%--                            <p class="product-category">Category</p>--%>
+<%--                            <h3 class="product-name"><a href="#">product name goes here</a></h3>--%>
+<%--                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+<%--                    <div class="product-widget">--%>
+<%--                        <div class="product-img">--%>
+<%--                            <img src="./img/product03.png" alt="">--%>
+<%--                        </div>--%>
+<%--                        <div class="product-body">--%>
+<%--                            <p class="product-category">Category</p>--%>
+<%--                            <h3 class="product-name"><a href="#">product name goes here</a></h3>--%>
+<%--                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </div>
                 <!-- /aside Widget -->
             </div>

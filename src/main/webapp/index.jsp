@@ -736,7 +736,7 @@
                 <div class="product-body">
                   <p class="product-category">Category</p>
                   <h3 class="product-name"><a href="/tivi?action=view&id=${list_TV.get(index).getId()}"><c:out value="${list_TV.get(index).getName()}"/></a></h3>
-                  <h4 class="product-price"><c:out value="${list_TV.get(index).getPrice()}"/> <del class="product-old-price"><c:out value="${list_TV.get(index).getPrice()}"/></del></h4>
+                  <h4 class="product-price"><c:out value="${list_TV.get(index).getPrice()}"/> <del class="product-old-price<c:out value="${list_TV.get(index).getPrice()}"/>"></del></h4>
                 </div>
               </div>
               <!-- /product widget -->
