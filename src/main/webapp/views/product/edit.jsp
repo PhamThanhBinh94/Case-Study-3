@@ -1,17 +1,19 @@
 <%--
   Created by IntelliJ IDEA.
   User: LENOVO
-  Date: 9/5/2020
-  Time: 2:32 PM
+  Date: 9/4/2020
+  Time: 2:22 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 <head>
     <title>User Management Application</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -19,12 +21,6 @@
     <style>
         header{
             border-bottom: solid 1px #c0c0c0;
-        }
-        .btn{
-            line-height: 2.5;
-        }
-        .col-md-4{
-            max-width: 68%;
         }
     </style>
 </head>
@@ -73,32 +69,64 @@
 
     </header>
 </div>
-
-    <div>
-         <h1 align="center">Danh sách khách hàng</h1>
-         <h5 style="float: right">
-            <a href="/users?action=create"><input type="button" value="Thêm khách hàng" class="btn btn-outline-success my-2 my-sm-0"></a>
-            </h5>
-    </div>
-
-
+<center>
+    <h1>Sửa sản phẩm</h1>
+</center>
 <div align="center">
-   <table border="1" cellpadding="5" class="table col-md-4" >
-        <tr class="thead-dark" >
-            <th>Phone</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-        </tr>
-        <c:forEach var="user" items="${listUser}">
+    <form method="post">
+        <table border="1" cellpadding="5" class="table col-xl-3">
+            <c:if test="${product != null}">
+                <input type="hidden" name="id" value="<c:out value="${product.getId()}"/>"/>
+            </c:if>
             <tr>
-            <td><c:out value="${user.getPhone()}"></c:out></td>
-            <td><c:out value="${user.getName()}"></c:out></td>
-            <td><c:out value="${user.getEmail()}"></c:out></td>
-            <td><c:out value="${user.getAddress()}"></c:out></td>
+                <th>ID: </th>
+                <td>
+                    <c:out value="${product.getId()}"/>
+                </td>
             </tr>
-        </c:forEach>
-    </table>
+            <tr>
+                <th>Type: </th>
+                <td>
+                    <input type="text" name="type" value="<c:out value="${product.getType()}"/>" size="60">
+                </td>
+            </tr>
+            <tr>
+                <th>Name: </th>
+                <td>
+                    <input type="text" name="name" value="<c:out value="${product.getName()}"/>" size="60">
+                </td>
+            </tr>
+            <tr>
+                <th>Brand: </th>
+                <td>
+                    <input type="text" name="brand" value="<c:out value="${product.getBrand()}"/>" size="60">
+                </td>
+            </tr>
+            <tr>
+                <th>Price: </th>
+                <td>
+                    <input type="text" name="price" value="<c:out value="${product.getPrice()}"/>" size="60">
+                </td>
+            </tr>
+            <tr>
+                <th>Image: </th>
+                <td>
+                    <input type="text" name="image" value="<c:out value="${product.getImage()}"/>" size="60">
+                </td>
+            </tr>
+            <tr>
+                <th>Amount: </th>
+                <td>
+                    <input type="text" name="amount" value="<c:out value="${product.getAmount()}"/>" size="60">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Save">
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 </body>
 </html>

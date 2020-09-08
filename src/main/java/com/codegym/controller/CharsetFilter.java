@@ -3,9 +3,7 @@ package com.codegym.controller;
 import javax.servlet.*;
 import java.io.IOException;
 
-
 public class CharsetFilter implements Filter {
-
     private String encoding;
 
     public void init(FilterConfig config) throws ServletException {

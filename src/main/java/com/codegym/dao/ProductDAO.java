@@ -32,6 +32,7 @@ public class ProductDAO implements IProductDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL,jdbcUsername,jdbcPassword);
         } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("ket noi có loi");
             e.printStackTrace();
         }
         return connection;

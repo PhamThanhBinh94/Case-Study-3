@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -6,7 +7,7 @@
   Time: 2:46 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -41,7 +42,18 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+<style>
+  div.product{
+    height: 500px;
+  }
+  div.col-md-4{
+    height: 300px;
+  }
+  /*img{*/
+  /*  align-content: center;*/
+  /*  height: 250px;*/
+  /*}*/
+</style>
 </head>
 <body>
 <!-- HEADER -->

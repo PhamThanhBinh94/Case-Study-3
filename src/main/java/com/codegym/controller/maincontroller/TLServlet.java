@@ -38,9 +38,9 @@ public class TLServlet extends HttpServlet {
 
     private void showListOfTL(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products;
-        products = productDAO.getProductNewByType("tu-lanh",20);
+        products = productDAO.getProductNewByType("tu-lanh",9);
         request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/main/tu_lanh.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/tu_lanh.jsp");
         dispatcher.forward(request,response);
     }
 }

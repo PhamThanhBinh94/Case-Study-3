@@ -6,7 +6,7 @@
 </web-app>
 <filter>
 <filter-name>CharsetFilter</filter-name>
-<filter-class>fi.foo.filters.CharsetFilter</filter-class>
+<filter-class>com.codegym.controller.CharsetFilter</filter-class>
 <init-param>
     <param-name>requestEncoding</param-name>
     <param-value>UTF-8</param-value>
@@ -17,3 +17,10 @@
 <filter-name>CharsetFilter</filter-name>
 <url-pattern>/*</url-pattern>
 </filter-mapping>
+
+<jsp-config>
+<jsp-property-group>
+    <url-pattern>*.jsp</url-pattern>
+    <page-encoding>UTF-8</page-encoding>
+</jsp-property-group>
+</jsp-config>

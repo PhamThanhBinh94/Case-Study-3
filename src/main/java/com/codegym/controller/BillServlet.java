@@ -34,6 +34,9 @@ public class BillServlet extends javax.servlet.http.HttpServlet {
             switch (action) {
                 case "create":
                     break;
+                case "history":
+                    listPurchaseHistory(request,response);
+                    break;
                 case "view":
                     showBillDetail(request,response);
                     break;
@@ -56,7 +59,7 @@ public class BillServlet extends javax.servlet.http.HttpServlet {
         request.setAttribute("details",details);
         request.setAttribute("total",total);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/bill/bill_detail.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/bill/bill_detail.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -69,7 +72,21 @@ public class BillServlet extends javax.servlet.http.HttpServlet {
         }
         request.setAttribute("bills", bills);
         request.setAttribute("totals",totals);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/bill/list_bill.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/bill/list_bill.jsp");
+        dispatcher.forward(request,response);
+    }
+
+    private void listPurchaseHistory(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        String customer_id = request.getParameter("id");
+        List<Bill> file = billDAO.getPurchaseHistory(customer_id);
+        List<Integer> totals = new ArrayList<>();
+        for (Bill bill : file) {
+            int total = billDAO.getTotalBill(bill.getBill_id());
+            totals.add(total);
+        }
+        request.setAttribute("file", file);
+        request.setAttribute("totals",totals);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/user/purchase_history.jsp");
         dispatcher.forward(request,response);
     }
 }

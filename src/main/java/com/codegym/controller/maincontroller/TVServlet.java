@@ -39,9 +39,9 @@ public class TVServlet extends HttpServlet {
 
     private void showListOfTV(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products;
-        products = productDAO.getProductNewByType("tivi",20);
+        products = productDAO.getProductNewByType("tivi",9);
         request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/main/tivi.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/tivi.jsp");
         dispatcher.forward(request,response);
     }
 }

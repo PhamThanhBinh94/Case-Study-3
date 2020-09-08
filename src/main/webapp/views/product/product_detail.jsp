@@ -5,6 +5,7 @@
   Time: 12:32 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%--<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -102,10 +103,10 @@
     </table>
     <img style="margin-left: 200px;"  src="<c:out value="${product.getImage()}" />" width="300px" height="300px"/>
     <p style="clear: both"> Information: </p>
-    <table class="table table">
+    <table border="1" cellpadding="5" class="table table-hover col-8">
         <c:forEach var="index" begin="${0}" end="${details.size()-1}">
             <c:if test="${index % 2 == 0}">
-                <tr>
+                <tr class="thead-dark">
                     <th colspan="2"><c:out value="${details.get(index)}"/></th>
                 </tr>
                 <c:forTokens var="token" items="${details.get(index+1)}" delims="===">

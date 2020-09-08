@@ -71,8 +71,8 @@
     <h1>Danh sách hóa đơn</h1>
 </center>
 
-    <table border="1" cellpadding="5" class="table" >
-        <tr class="thead-dark" >
+    <table border="1" cellpadding="5" class="table col-md-6" align="center" >
+        <tr class="thead-dark " >
 
             <th>Bill ID</th>
             <th>Customer ID</th>

@@ -17,7 +17,7 @@ public class BillDAO implements iBillDAO {
     private static final String UPDATE_BILL_SQL = "update bill set customer_id=?, create_date=?, address=?, status=? where bill_id=?;";
     private static final String GET_TOTAL_BILL = "select sum(unit_price) as total from bill_detail where bill_id=?;";
     private static final String GET_BILL_DETAIL = "select product_id,unit_price,amount from bill_detail where bill_id = ?;";
-
+    private static final String GET_PURCHASE_HISTORY = "select * from bill where customer_id= ?";
     public BillDAO(){
     }
 
@@ -124,7 +124,7 @@ public class BillDAO implements iBillDAO {
     public List<String> getBillDetail(int bill_id) {
         List<String> details = new ArrayList<>();
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(GET_BILL_DETAIL);) {
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_BILL_DETAIL);){
             preparedStatement.setInt(1,bill_id);
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -138,5 +138,24 @@ public class BillDAO implements iBillDAO {
             e.printStackTrace();
         }
         return details;
+    }
+
+    public List<Bill> getPurchaseHistory(String customer_id) throws SQLException {
+        List<Bill> detailsPurchase = new ArrayList<>();
+        try(Connection connection = getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(GET_PURCHASE_HISTORY);){
+            preparedStatement.setString(1,customer_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                int bill_id = rs.getInt("bill_id");
+                String customer_id1 = rs.getString("customer_id");
+                String create_date = rs.getString("create_date");
+                String address = rs.getString("address");
+                String status = rs.getString("status");
+
+                detailsPurchase.add(new Bill(bill_id,customer_id1,create_date,address,status));
+            }
+        }
+        return detailsPurchase;
     }
 }

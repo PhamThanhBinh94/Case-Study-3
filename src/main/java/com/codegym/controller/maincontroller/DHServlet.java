@@ -38,9 +38,9 @@ public class DHServlet extends HttpServlet {
 
     private void showListOfTL(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products;
-        products = productDAO.getProductNewByType("dieu-hoa-nhiet-do",20);
+        products = productDAO.getProductNewByType("dieu-hoa-nhiet-do",9);
         request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/main/dieu_hoa.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/dieu_hoa.jsp");
         dispatcher.forward(request,response);
     }
 }

@@ -38,9 +38,9 @@ public class MGServlet extends HttpServlet {
 
     private void showListOfTL(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products;
-        products = productDAO.getProductNewByType("may-giat",20);
+        products = productDAO.getProductNewByType("may-giat",9);
         request.setAttribute("products",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/views/main/may_giat.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/main/may_giat.jsp");
         dispatcher.forward(request,response);
     }
 }

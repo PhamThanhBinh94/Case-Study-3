@@ -1,16 +1,15 @@
+﻿<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: LENOVO
-  Date: 9/4/2020
-  Time: 2:22 PM
+  Date: 9/7/2020
+  Time: 3:38 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Use Management Application</title>
-    <meta charset="utf-8">
+    <title>Purchase History</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -34,13 +33,13 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-<%--                    <li class="nav-item active">--%>
-                        <a class="navbar-brand" href="http://localhost:8080/users">Khách hàng <span class="sr-only">(current)</span></a>
-                        <a class="navbar-brand" href="http://localhost:8080/bill">Hóa đơn<span class="sr-only">(current)</span></a>
-<%--                    </li>--%>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link" href="#">Link</a>--%>
-<%--                    </li>--%>
+                    <%--                    <li class="nav-item active">--%>
+                    <a class="navbar-brand" href="http://localhost:8080/users">Khách hàng <span class="sr-only">(current)</span></a>
+                    <a class="navbar-brand" href="http://localhost:8080/bill">Hóa đơn<span class="sr-only">(current)</span></a>
+                    <%--                    </li>--%>
+                    <%--                    <li class="nav-item">--%>
+                    <%--                        <a class="nav-link" href="#">Link</a>--%>
+                    <%--                    </li>--%>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle navbar-brand" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Sản phẩm
@@ -55,9 +54,9 @@
                             <a class="dropdown-item" href="#">Khác</a>
                         </div>
                     </li>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>--%>
-<%--                    </li>--%>
+                    <%--                    <li class="nav-item">--%>
+                    <%--                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>--%>
+                    <%--                    </li>--%>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
@@ -69,36 +68,27 @@
     </header>
 </div>
 <center>
-    <h1 id="product1">Danh sách sản phẩm</h1>
-    <h5 align="right">
-        <a href="/products?action=create"><input type="button" value="Thêm sản phẩm" class="btn btn-outline-success my-2 my-sm-0" ></a>
-    </h5>
+    <h1>Lịch sử mua hàng</h1>
 </center>
 <div align="center">
-    <table id="product2" border="1" cellpadding="5" class="table col-xs-9">
-        <tr class="thead-dark">
-            <th>ID</th>
-            <th>Type</th>
-            <th>Name</th>
-            <th>Brand</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Amount</th>
-            <th>Action</th>
+    <table border="1" cellpadding="5" class="table col-md-6" align="center" >
+        <tr class="thead-dark " >
+
+            <th>Bill ID</th>
+            <th>Customer ID</th>
+            <th>Create Date</th>
+            <th>Address</th>
+            <th>Status</th>
+            <th>Total</th>
         </tr>
-        <c:forEach items="${listProduct}" var="product">
+        <c:forEach var="bill" items="${file}">
             <tr>
-                <td><a href="/products?action=view&id=${product.getId()}"><c:out value="${product.getId()}"></c:out></a></td>
-                <td><c:out value="${product.getType()}"></c:out></td>
-                <td><c:out value="${product.getName()}"></c:out></td>
-                <td><c:out value="${product.getBrand()}"></c:out></td>
-                <td><c:out value="${product.getPrice()}"></c:out></td>
-                <td><img src="${product.getImage()}"/></td>
-                <td><c:out value="${product.getAmount()}"></c:out></td>
-                <td>
-                    <a href="/products?action=edit&id=${product.getId()}">Edit</a>
-                    <a href="/products?action=delete&id=${product.getId()}">Delete</a>
-                </td>
+                <td><a href="/bill?action=view&id=${bill.getBill_id()}"><c:out value="${bill.getBill_id()}"/></a></td>
+                <td><c:out value="${bill.getCustomer_id()}"/></td>
+                <td><c:out value="${bill.getCreate_date()}"/></td>
+                <td><c:out value="${bill.getAddress()}"/></td>
+                <td><c:out value="${bill.getStatus()}"/></td>
+                <td><c:out value="${totals.get(file.indexOf(bill))}"/></td>
             </tr>
         </c:forEach>
     </table>
